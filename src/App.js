@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Animals from "./pages/Animals";
+import SingleAnimal from "./components/SingleAnimal";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route index element={<Home />}></Route>
         <Route path="/animals" element={<Animals />}></Route>
+        <Route path="/animals/:id" element={<SingleAnimal />}></Route>
       </Routes>
     </div>
   );
