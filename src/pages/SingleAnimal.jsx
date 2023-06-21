@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import SeeAnimal from "./SeeAnimal";
+import SeeAnimal from "../components/SeeAnimal";
 import { useContext } from "react";
 import AnimalsContext from "../storage/AnimalsContext";
 

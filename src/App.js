@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Animals from "./pages/Animals";
-import SingleAnimal from "./components/SingleAnimal";
+import SingleAnimal from "./pages/SingleAnimal";
 
 function App() {
   return (
