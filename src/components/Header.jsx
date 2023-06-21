@@ -24,21 +24,21 @@ const Header = () => {
       <nav className="nav">
         <div className="container">
           <div className="logo">
-            <Link to="/">Your Logo</Link>
+            <Link to="/">My Zoo</Link>
           </div>
           <div id="mainListDiv" className="main_list">
             <ul className="navlinks">
               <li>
-                <Link href="#">Animals</Link>
+                <Link to="/animals">Animals</Link>
               </li>
               <li>
-                <Link href="#">Add Animal</Link>
+                <Link to="#">Add Animal</Link>
               </li>
               <li>
-                <Link href="#">Login</Link>
+                <Link to="#">Login</Link>
               </li>
               <li>
-                <Link href="#">Register</Link>
+                <Link to="#">Register</Link>
               </li>
             </ul>
           </div>

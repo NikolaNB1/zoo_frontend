@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: url(https://static.s123-cdn-static-d.com/uploads/2351692/2000_5e456a9dcd421.jpg);
+  width: 100%;
+  height: 100vh;
+  background-position: center top;
+  background-size: cover;
 }
 
 .App-logo {
@@ -61,7 +66,7 @@ body {
 }
 .nav div.logo a {
   text-decoration: none;
-  color: #fff;
+  color: #1525b8;
   font-size: 2rem;
 }
 
