@@ -32,7 +32,7 @@ const Header = () => {
                 <Link to="/animals">Animals</Link>
               </li>
               <li>
-                <Link to="#">Add Animal</Link>
+                <Link to="/add">Add Animal</Link>
               </li>
               <li>
                 <Link to="#">Login</Link>

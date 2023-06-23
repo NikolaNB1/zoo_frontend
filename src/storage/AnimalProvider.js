@@ -18,7 +18,7 @@ const AnimalProvider = ({ children }) => {
   const animalContext = {
     animals: animalState,
     updateAnimal: setAnimalState,
-    addAnimal: postNewAnimal,
+    postAnimal: postNewAnimal,
   };
   return (
     <AnimalsContext.Provider value={animalContext}>

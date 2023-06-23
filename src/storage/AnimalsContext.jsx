@@ -3,7 +3,7 @@ import { createContext } from "react";
 const AnimalsContext = createContext({
   animals: [],
   updateAnimal: () => {},
-  addAnimal: () => {},
+  postAnimal: () => {},
 });
 
 export default AnimalsContext;

@@ -11,24 +11,33 @@ const SeeAnimal = ({ animals, index }) => {
       }}
     >
       <div
-        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+        className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
         style={{ backgroundColor: "white" }}
       >
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary-emphasis">
+        <div className="col p-4 d-flex flex-column position-static">
+          <strong className="d-inline-block mb-2 text-primary-emphasis">
             {animal.name}
           </strong>
-          <h3 class="mb-0">{animal.type}</h3>
-          <div class="mb-1 text-body-secondary">Habitat: {animal.habitat}</div>
-          <p class="card-text mb-auto">
-            Rare: {animal.rare !== 0 ? "Yes" : "No"}
-          </p>
-          <p class="card-text mb-auto">
-            No of type in zoo: {animal.count_in_zoo}
-          </p>
-          <p class="card-text mb-auto">Favorite food: {animal.favorite_food}</p>
+          <h3 className="mb-0">{animal.type}</h3>
+          <div className="mb-1 text-body-secondary">
+            Habitat: {animal.habitat}
+          </div>
+          <ul className="stats">
+            <li>
+              <var>{animal.rare !== 0 ? "Yes" : "No"}</var>
+              <label>Rare</label>
+            </li>
+            <li>
+              <var>{animal.count_in_zoo}</var>
+              <label>No of type in zoo:</label>
+            </li>
+            <li>
+              <var>{animal.favorite_food}</var>
+              <label>Favorite food:</label>
+            </li>
+          </ul>
         </div>
-        <div class="col-auto d-none d-lg-block"></div>
+        <div className="col-auto d-none d-lg-block"></div>
       </div>
     </div>
   );

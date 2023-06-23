@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+import AddAnimalForm from "../components/AddAnimalForm";
+
 const AddAnimal = () => {
-  return;
+  useEffect(() => {
+    document.querySelector(".nav").classList.add("affix");
+  }, []);
+
+  return (
+    <div>
+      <AddAnimalForm />
+    </div>
+  );
 };
 export default AddAnimal;

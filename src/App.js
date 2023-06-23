@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Animals from "./pages/Animals";
 import SingleAnimal from "./pages/SingleAnimal";
+import AddAnimal from "./pages/AddAnimal";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route index element={<Home />}></Route>
         <Route path="/animals" element={<Animals />}></Route>
         <Route path="/animals/:id" element={<SingleAnimal />}></Route>
+        <Route path="/add" element={<AddAnimal />}></Route>
       </Routes>
     </div>
   );
