@@ -1,8 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AnimalsContext from "../storage/AnimalsContext";
+import { editAnimalById, getAnimalById } from "../service/animalsService";
+import { useParams } from "react-router-dom";
 
 const AddAnimalForm = () => {
   const { postAnimal } = useContext(AnimalsContext);
+  const { id } = useParams();
 
   const [animal, setAnimal] = useState({
     name: "",
@@ -12,6 +15,15 @@ const AddAnimalForm = () => {
     rare: false,
     count_in_zoo: 0,
   });
+
+  useEffect(() => {
+    document.querySelector(".nav").classList.add("affix");
+    if (id) {
+      getAnimalById(id).then(({ data }) => {
+        setAnimal(data);
+      });
+    }
+  }, [id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,14 +51,18 @@ const AddAnimalForm = () => {
       animal.rare,
       animal.count_in_zoo
     );
-    setAnimal({
-      name: "",
-      type: "",
-      habitat: "",
-      favorite_food: "",
-      rare: false,
-      count_in_zoo: 0,
-    });
+    if (id) {
+      editAnimalById(id, animal);
+    } else {
+      setAnimal({
+        name: "",
+        type: "",
+        habitat: "",
+        favorite_food: "",
+        rare: false,
+        count_in_zoo: 0,
+      });
+    }
   };
 
   return (

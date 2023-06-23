@@ -20,3 +20,10 @@ export const addAnimal = (
     favorite_food,
   });
 };
+export const getAnimalById = (id) => {
+  return API.get(`/animals/${id}`);
+};
+
+export const editAnimalById = (id, animal) => {
+  return API.patch(`/animals/${id}`, animal);
+};

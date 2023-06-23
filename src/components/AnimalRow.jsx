@@ -21,6 +21,7 @@ const AnimalRow = ({ animals }) => {
             <th>No of type in zoo</th>
             <th>Favorite food</th>
             <th>View</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>

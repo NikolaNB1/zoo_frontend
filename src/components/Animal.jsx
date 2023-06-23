@@ -14,6 +14,11 @@ const Animal = ({ animal, index }) => {
           See Animal
         </Link>
       </td>
+      <td>
+        <Link className="btn btn-outline-warning" to={`edit/${animal.id}`}>
+          Edit Animal
+        </Link>
+      </td>
     </tr>
   );
 };

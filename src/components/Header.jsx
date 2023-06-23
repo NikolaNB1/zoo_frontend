@@ -6,7 +6,6 @@ const Header = () => {
     const handleScroll = () => {
       if (document.documentElement.scrollTop > 50) {
         document.querySelector(".nav").classList.add("affix");
-        console.log("OK");
       } else {
         document.querySelector(".nav").classList.remove("affix");
       }

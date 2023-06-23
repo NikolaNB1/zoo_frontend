@@ -13,6 +13,7 @@ function App() {
         <Route path="/animals" element={<Animals />}></Route>
         <Route path="/animals/:id" element={<SingleAnimal />}></Route>
         <Route path="/add" element={<AddAnimal />}></Route>
+        <Route path="/animals/edit/:id" element={<AddAnimal />}></Route>
       </Routes>
     </div>
   );
