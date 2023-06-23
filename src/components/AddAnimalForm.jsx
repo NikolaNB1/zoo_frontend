@@ -1,19 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import AnimalsContext from "../storage/AnimalsContext";
-import { editAnimalById, getAnimalById } from "../service/animalsService";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  addAnimal,
+  editAnimalById,
+  getAnimalById,
+} from "../service/animalsService";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddAnimalForm = () => {
-  const { postAnimal } = useContext(AnimalsContext);
+  const navigate = useNavigate();
+
   const { id } = useParams();
 
   const [animal, setAnimal] = useState({
     name: "",
     type: "",
     habitat: "",
-    favorite_food: "",
     rare: false,
     count_in_zoo: 0,
+    favorite_food: "",
   });
 
   useEffect(() => {
@@ -43,26 +47,27 @@ const AddAnimalForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(animal);
-    postAnimal(
-      animal.name,
-      animal.type,
-      animal.habitat,
-      animal.favorite_food,
-      animal.rare,
-      animal.count_in_zoo
-    );
     if (id) {
       editAnimalById(id, animal);
     } else {
+      addAnimal(
+        animal.name,
+        animal.type,
+        animal.habitat,
+        animal.rare,
+        animal.count_in_zoo,
+        animal.favorite_food
+      );
       setAnimal({
         name: "",
         type: "",
         habitat: "",
-        favorite_food: "",
         rare: false,
         count_in_zoo: 0,
+        favorite_food: "",
       });
     }
+    navigate("/animals");
   };
 
   return (
@@ -157,13 +162,23 @@ const AddAnimalForm = () => {
               </div>
               <div className="row justify-content-end mt-3">
                 <div className="form-group col-sm-6">
-                  <button
-                    type="submit"
-                    className="btn btn-success"
-                    onClick={handleSubmit}
-                  >
-                    Add animal
-                  </button>
+                  {!id ? (
+                    <button
+                      type="submit"
+                      className="btn btn-success"
+                      onClick={handleSubmit}
+                    >
+                      Add animal
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="btn btn-warning"
+                      onClick={handleSubmit}
+                    >
+                      Edit animal
+                    </button>
+                  )}
                 </div>
               </div>
             </form>

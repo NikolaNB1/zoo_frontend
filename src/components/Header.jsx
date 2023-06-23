@@ -1,7 +1,12 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../storage/UserContext";
+import { logOut } from "../service/usersService";
 
 const Header = () => {
+  const { loggedIn, logOutUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       if (document.documentElement.scrollTop > 50) {
@@ -18,6 +23,16 @@ const Header = () => {
     };
   }, []);
 
+  const handleLogOut = () => {
+    const shouldLogOut = window.confirm("Are you sure?");
+    if (shouldLogOut) {
+      logOut().then(({ data }) => {
+        logOutUser(data);
+        navigate("/login");
+      });
+    }
+  };
+
   return (
     <div>
       <nav className="nav">
@@ -27,18 +42,37 @@ const Header = () => {
           </div>
           <div id="mainListDiv" className="main_list">
             <ul className="navlinks">
-              <li>
-                <Link to="/animals">Animals</Link>
-              </li>
-              <li>
-                <Link to="/add">Add Animal</Link>
-              </li>
-              <li>
-                <Link to="#">Login</Link>
-              </li>
-              <li>
-                <Link to="#">Register</Link>
-              </li>
+              {loggedIn ? (
+                <>
+                  <li>
+                    <Link to="/animals">Animals</Link>
+                  </li>
+                  <li>
+                    <Link to="/add">Add Animal</Link>
+                  </li>
+                  <li>
+                    <button
+                      className="btn btn-outline-danger"
+                      type="submit"
+                      onClick={() => handleLogOut()}
+                    >
+                      Log Out
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/animals">Animals</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/register">Register</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../storage/UserContext";
 
-const Animal = ({ animal, index }) => {
+const Animal = ({ animal, index, handleDelete }) => {
+  const { loggedIn } = useContext(UserContext);
   return (
     <tr key={index}>
       <td>{animal.name}</td>
@@ -18,6 +21,17 @@ const Animal = ({ animal, index }) => {
         <Link className="btn btn-outline-warning" to={`edit/${animal.id}`}>
           Edit Animal
         </Link>
+      </td>
+      <td>
+        {/* {loggedIn ? ( */}
+        <button
+          className="btn btn-outline-danger"
+          type="delete"
+          onClick={() => handleDelete(animal.id)}
+        >
+          Delete Animal
+        </button>
+        {/* ) : null} */}
       </td>
     </tr>
   );

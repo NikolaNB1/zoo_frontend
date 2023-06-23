@@ -1,6 +1,6 @@
 import Animal from "./Animal";
 
-const AnimalRow = ({ animals }) => {
+const AnimalRow = ({ animals, handleDelete }) => {
   return (
     <div>
       <table
@@ -22,11 +22,17 @@ const AnimalRow = ({ animals }) => {
             <th>Favorite food</th>
             <th>View</th>
             <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {animals.map((animal, index) => (
-            <Animal key={index} animal={animal} index={index} />
+            <Animal
+              key={index}
+              animal={animal}
+              index={index}
+              handleDelete={handleDelete}
+            />
           ))}
         </tbody>
       </table>

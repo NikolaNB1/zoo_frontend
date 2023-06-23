@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getAnimals } from "../service/animalsService";
+import { deleteAnimalById, getAnimals } from "../service/animalsService";
 import AnimalsContext from "../storage/AnimalsContext";
 import AnimalRow from "../components/AnimalRow";
 
@@ -29,13 +29,23 @@ const Animals = () => {
     }
   };
 
+  const handleDelete = (id) => {
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete animal?"
+    );
+    if (shouldDelete) {
+      deleteAnimalById(id);
+      getAnimals(currentPage).then(({ data }) => updateAnimal(data.data));
+    }
+  };
+
   return (
     <div>
       <div
         className="container"
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <AnimalRow animals={animals} />
+        <AnimalRow animals={animals} handleDelete={handleDelete} />
       </div>
       <div className=" d-flex justify-content-center m-3">
         <nav aria-label="Page navigation example" style={{ opacity: "80%" }}>

@@ -25,5 +25,8 @@ export const getAnimalById = (id) => {
 };
 
 export const editAnimalById = (id, animal) => {
-  return API.patch(`/animals/${id}`, animal);
+  return API.put(`/animals/${id}`, animal);
+};
+export const deleteAnimalById = (id) => {
+  return API.delete(`/animals/${id}`);
 };
